@@ -50,19 +50,25 @@ A API estará disponível em `http://localhost:8080`.
 
 1. Suba um SQL Server (ou ajuste a connection string):
 
-```bash
-docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=YourStrong@Passw0rd \
-  -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
-```
+    ```bash
+    docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=YourStrong@Passw0rd \
+    -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
+    ```
 
-1. Ajuste `appsettings.Development.json` com sua connection string.
+    ou
 
-2. Execute:
+    ```bash
+    docker compose -f docker-compose.db.yml up -d 
+    ```
 
-```bash
-cd src/Store.API
-dotnet run
-```
+2. Ajuste `appsettings.Development.json` com sua connection string.
+
+3. Execute:
+
+    ```bash
+    cd src/Store.API
+    dotnet run
+    ```
 
 As migrations são aplicadas automaticamente.
 
@@ -72,7 +78,6 @@ As migrations são aplicadas automaticamente.
 
 | Interface | URL |
 |-----------|-----|
-| **Scalar** (moderno) | <http://localhost:8080/scalar> |
 | **Swagger UI** | <http://localhost:8080/swagger> |
 | **OpenAPI JSON** | <http://localhost:8080/openapi/v1.json> |
 | **Health Check** | <http://localhost:8080/health> |
